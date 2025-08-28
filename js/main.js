@@ -6,12 +6,11 @@ function getData(category="sports", search="") {
             let newsData = data.articles
             $("main .row").html("")
             newsData.forEach(item => {
-                // console.log(item.content)
                 if (search === "") {
                     $("main .row").append(`
                     <div class="col">
                         <div class="card position-relative rounded-4 overflow-hidden mb-4">
-                            <img src="${item.urlToImage || "../imgs/placeholder.png"}" class="card-img-top" alt="...">
+                            <img src="${item.urlToImage || "../../autoupdated_news_project/imgs/placeholder.png"}" class="card-img-top" alt="...">
                             <a href="${item.url}" class="text-black d-block">
                                 <div class="card-body position-absolute bottom-0">
                                     <h5 class="card-title bg-white px-2 py-2 rounded-top mb-0"><span class="px-2 rounded-1">${item.source.name || "unknown"}</span></h5>
@@ -33,7 +32,7 @@ function getData(category="sports", search="") {
                     $("main .row").append(`
                     <div class="col">
                         <div class="card position-relative rounded-4 overflow-hidden mb-4">
-                            <img src="${item.urlToImage || "../imgs/placeholder.png"}" class="card-img-top" alt="...">
+                            <img src="${item.urlToImage || "../../autoupdated_news_project/imgs/placeholder.png"}" class="card-img-top" alt="...">
                             <a href="${item.url}" class="text-black d-block">
                                 <div class="card-body position-absolute bottom-0">
                                     <h5 class="card-title bg-white px-2 py-2 rounded-top mb-0"><span class="px-2 rounded-1">${item.source.name || "unknown"}</span></h5>
@@ -51,10 +50,15 @@ function getData(category="sports", search="") {
                         </div>
                     </div>
                     `)
-                    // console.log(item)
                 }
             });
         },
+        error: function (data) {
+            $("<p></p>", {
+                text: "404, not found",
+                class: "m-auto text-center fw-bold display-3 w-100 alert alert-danger"
+            }).appendTo("main .row")
+        }
     })
 }
 getData()
