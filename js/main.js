@@ -58,6 +58,7 @@ function getData(category="sports", search="") {
                 text: "404, not found",
                 class: "m-auto text-center fw-bold display-3 w-100 alert alert-danger"
             }).appendTo("main .row")
+            $("form input, form select").attr("disabled", "true")
         }
     })
 }
